@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: simpleq_production
-  username: simpleq
-  password: <%= ENV['SIMPLEQ_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  #
+  # database: simpleq_production
+  # username: simpleq
+  # password: <%= ENV['SIMPLEQ_DATABASE_PASSWORD'] %>
