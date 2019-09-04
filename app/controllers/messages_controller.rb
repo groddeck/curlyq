@@ -110,6 +110,9 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      JSON.parse(params.require(:message)).slice(:context, :topic, :body, :begun_at, :success_at, :failed_at)
+      m = params.require(:message)
+      js = JSON.parse(m).with_indifferent_access
+      res = js.slice(:context, :topic, :body, :begun_at, :success_at, :failed_at)
+      res
     end
 end
