@@ -65,7 +65,7 @@ class MessagesController < ApplicationController
   def begin
     respond_to do |format|
       res = Message.transaction do
-        @message = Message.where(begun_at: nil).order(:created_at).first
+        @message = Message.where(begun_at: nil, topic: params[:topic]).order(:created_at).first
         @message.update(begun_at: Time.now) if @message
       end
       if res
